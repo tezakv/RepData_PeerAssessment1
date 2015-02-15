@@ -149,6 +149,11 @@ To calculate the 5-minute interval which on average across all days contains max
 
 ```r
 max_step_interval <- daily_act[daily_act$steps==max(daily_act$steps), "interval"]
+max_step_interval
+```
+
+```
+## [1] 835
 ```
 Resulting 5-minute interval with maximum number of steps is: **835**.
 
@@ -159,6 +164,11 @@ To calculate the total number of missing values in the dataset the following sta
 ```r
 mv_ind_total <- !complete.cases(act_mon)
 mv_num_total <- sum(mv_ind_total)
+mv_num_total
+```
+
+```
+## [1] 2304
 ```
 Note that `complete.cases()` functions returns logical vector of row index where there's no missing value. By negating that vector, one obtains logical vector with indexes of rows where there are missing values. Since logical 'TRUE' is also presented as value '1', summation function will return the number of rows with missing values: **2304**.
 
@@ -166,6 +176,11 @@ How much of missing values is placed in the steps variable?
 
 ```r
 mv_num_steps <- sum(is.na(act_mon$steps))
+mv_num_steps
+```
+
+```
+## [1] 2304
 ```
 Since 'steps' variable holds **2304** missing values it is obvious that consequently holds all missing values in the dataset, which also could be concluded according to the result of `summary()` function.
 
@@ -181,7 +196,7 @@ New dataset 'act_mon_fill' contains no missing values.
 Again, total number of steps taken each day is calculated:
 
 ```r
-step_per_day_fill <- aggregate(steps ~ date, data=act_mon_fill, sum)
+step_per_day_fill <- aggregate(steps~date, data=act_mon_fill, sum)
 ```
 Resulting data frame 'step_per_day_fill' contains days of observations and corresponding total number of steps.  
 Amount of total steps taken for each day divided by intervals is represented by the histogram:
@@ -219,7 +234,8 @@ total_step_median
 ## [1] 10766.19
 ```
 As one could expect, mean value for the total number of steps taken per day is equal in both cases when there are missing values in the dataset and when there are none i.e. missing values are replaced by the average steps taken for each 5-minute interval.
-Nevertheless, median value differs for those two cases, because replacing missing values changed the vector's numeric structure.
+Nevertheless, median value differs for those two cases, because replacing missing values changed the vector's numeric structure.  
+When comparing histograms for those two cases, it can be seen that in case when NAs are replaced with the mean value for 5-minute interval, there's an increase of values in the range 10000-15000, which is expected since the mean value of steps taken each day is **10766.19**.
 
 ## 5. Differences in activity patterns between weekdays and weekends
 
@@ -227,10 +243,6 @@ One needs to set the System Time Settings to 'English':
 
 ```r
 Sys.setlocale("LC_TIME", "C")
-```
-
-```
-## [1] "C"
 ```
 
 New factor variable in the dataset with two levels – 'weekday' and 'weekend' indicating whether a given date is a weekday or weekend day is created:
@@ -244,7 +256,7 @@ act_mon_fill$day_type <- factor(ifelse(act_mon_fill$date%in%c("Saturday","Sunday
 Average number of steps taken for each 5-minute interval, averaged across all weekday days or weekend days, is calculated:
 
 ```r
-daily_act_type <- aggregate(steps ~ interval+day_type, data=act_mon_fill, mean)
+daily_act_type <- aggregate(steps~interval+day_type, data=act_mon_fill, mean)
 ```
 
 Resulting data frame 'daily_act_type' contains 5-minute interval and corresponding average number of steps averaged across all weekday days or weekend days, which is also presented by the time series plot:
