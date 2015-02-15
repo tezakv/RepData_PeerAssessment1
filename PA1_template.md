@@ -9,7 +9,7 @@ output:
 Activity Monitoring Case Study
 ==============================
 
-### 0. Introduction
+## 0. Introduction
 
 It is now possible to collect a large amount of data about personal movement using activity monitoring devices. Device used in this case study collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November 2012 and include the number of steps taken in 5 minute intervals each day.  
 
@@ -25,7 +25,7 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 
 
 
-### 1. Loading and preprocessing the data
+## 1. Loading and preprocessing the data
 
 The dataset is stored in the 'activity.csv' file.  
 Create a string variable containing dataset file name and load the dataset into the corresponding data frame (act_mon):
@@ -77,7 +77,7 @@ summary(act_mon)
 ```
 Interesting thing to note is the number of missing values, which seem to appear only in the 'steps' variable.
 
-### 2. Mean total number of steps taken per day
+## 2. Mean total number of steps taken per day
 
 Aggregate steps over days in terms of summation in order to obtain total number of steps taken per day:
 
@@ -121,7 +121,7 @@ step_per_day_median
 ## [1] 10765
 ```
 
-### 3. Average daily activity pattern
+## 3. Average daily activity pattern
 
 Average number of steps taken for each 5-minute interval across all days is calculated by using `aggregate()` function:
 
@@ -152,7 +152,7 @@ max_step_interval <- daily_act[daily_act$steps==max(daily_act$steps), "interval"
 ```
 Resulting 5-minute interval with maximum number of steps is: **835**.
 
-### 4. Imputing missing values
+## 4. Imputing missing values
 
 To calculate the total number of missing values in the dataset the following statements are used:
 
@@ -221,7 +221,7 @@ total_step_median
 As one could expect, mean value for the total number of steps taken per day is equal in both cases when there are missing values in the dataset and when there are none i.e. missing values are replaced by the average steps taken for each 5-minute interval.
 Nevertheless, median value differs for those two cases, because replacing missing values changed the vector's numeric structure.
 
-### Differences in activity patterns between weekdays and weekends
+## 5. Differences in activity patterns between weekdays and weekends
 
 One needs to set the System Time Settings to 'English':
 

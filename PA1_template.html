@@ -203,7 +203,7 @@ hr {
 <body>
 <h1>Activity Monitoring Case Study</h1>
 
-<h3>0. Introduction</h3>
+<h2>0. Introduction</h2>
 
 <p>It is now possible to collect a large amount of data about personal movement using activity monitoring devices. Device used in this case study collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November 2012 and include the number of steps taken in 5 minute intervals each day.  </p>
 
@@ -217,7 +217,7 @@ hr {
 
 <p>The dataset is stored in a comma-separated-value (CSV) file and there are a total of 17,568 observations in this dataset.</p>
 
-<h3>1. Loading and preprocessing the data</h3>
+<h2>1. Loading and preprocessing the data</h2>
 
 <p>The dataset is stored in the &#39;activity.csv&#39; file.<br/>
 Create a string variable containing dataset file name and load the dataset into the corresponding data frame (act_mon):</p>
@@ -264,7 +264,7 @@ act_mon &lt;- read.csv(act_mon_filename, header=T, stringsAsFactors=F)
 
 <p>Interesting thing to note is the number of missing values, which seem to appear only in the &#39;steps&#39; variable.</p>
 
-<h3>2. Mean total number of steps taken per day</h3>
+<h2>2. Mean total number of steps taken per day</h2>
 
 <p>Aggregate steps over days in terms of summation in order to obtain total number of steps taken per day:</p>
 
@@ -303,7 +303,7 @@ step_per_day_median
 <pre><code>## [1] 10765
 </code></pre>
 
-<h3>3. Average daily activity pattern</h3>
+<h2>3. Average daily activity pattern</h2>
 
 <p>Average number of steps taken for each 5-minute interval across all days is calculated by using <code>aggregate()</code> function:</p>
 
@@ -333,7 +333,7 @@ grid(col=&quot;black&quot;)
 
 <p>Resulting 5-minute interval with maximum number of steps is: <strong>835</strong>.</p>
 
-<h3>4. Imputing missing values</h3>
+<h2>4. Imputing missing values</h2>
 
 <p>To calculate the total number of missing values in the dataset the following statements are used:</p>
 
@@ -399,7 +399,7 @@ total_step_median
 <p>As one could expect, mean value for the total number of steps taken per day is equal in both cases when there are missing values in the dataset and when there are none i.e. missing values are replaced by the average steps taken for each 5-minute interval.
 Nevertheless, median value differs for those two cases, because replacing missing values changed the vector&#39;s numeric structure.</p>
 
-<h3>Differences in activity patterns between weekdays and weekends</h3>
+<h2>5. Differences in activity patterns between weekdays and weekends</h2>
 
 <p>One needs to set the System Time Settings to &#39;English&#39;:</p>
 
